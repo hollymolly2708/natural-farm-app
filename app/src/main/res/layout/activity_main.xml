@@ -249,10 +249,12 @@
             </TextView>
 
             <TextView
+                android:id="@+id/tv_flash_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
+
                 android:text="Fl"
                 android:textColor="@color/white"
                 android:textSize="20sp"
@@ -263,10 +265,132 @@
             </TextView>
 
             <ImageView
+                android:id="@+id/iv_flash"
+                android:layout_width="15dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_flash"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_flash_1"
+                app:layout_constraintStart_toEndOf="@+id/tv_flash_1"
+                app:layout_constraintTop_toTopOf="@+id/tv_flash_1">
+
+            </ImageView>
+
+            <TextView
+                android:id="@+id/tv_flash_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:src=""></ImageView>
+                android:text="sh"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="italic|bold"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_flash"
+                app:layout_constraintStart_toEndOf="@+id/iv_flash"
+                app:layout_constraintTop_toTopOf="@+id/iv_flash">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginStart="8dp"
+                android:text="Sale"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="italic|bold"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_flash_2"
+                app:layout_constraintStart_toEndOf="@+id/tv_flash_2"
+                app:layout_constraintTop_toTopOf="@+id/tv_flash_2">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/tv_input_hours"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/countdown_timer_minutes_background"
+                android:padding="5dp"
+                android:text="01"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/textView2"
+                app:layout_constraintStart_toEndOf="@+id/textView2"
+                app:layout_constraintTop_toTopOf="@+id/textView2">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/divide_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text=":"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_input_hours"
+                app:layout_constraintStart_toEndOf="@+id/tv_input_hours"
+                app:layout_constraintTop_toTopOf="@+id/tv_input_hours">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/tv_input_minutes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/countdown_timer_minutes_background"
+                android:padding="5dp"
+                android:text="01"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/divide_1"
+                app:layout_constraintStart_toEndOf="@+id/divide_1"
+                app:layout_constraintTop_toTopOf="@+id/divide_1">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/divide_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text=":"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_input_minutes"
+                app:layout_constraintStart_toEndOf="@+id/tv_input_minutes"
+                app:layout_constraintTop_toTopOf="@+id/tv_input_minutes"
+                app:layout_constraintVertical_bias="0.666">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/tv_input_seconds"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/countdown_timer_minutes_background"
+                android:padding="5dp"
+                android:text="01"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_input_minutes"
+                app:layout_constraintStart_toEndOf="@+id/divide_2"
+                app:layout_constraintTop_toTopOf="@+id/divide_2"
+               >
+
+            </TextView>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_products"
