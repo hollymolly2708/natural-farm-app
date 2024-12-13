@@ -5,6 +5,8 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nature_farm.android.homepage.databinding.ActivityMainBinding
 import com.nature_farm.android.homepage.recyclerview.CategoryAdapter
+import com.nature_farm.android.homepage.recyclerview.ExclusiveBrandAdapter
+import com.nature_farm.android.homepage.recyclerview.HealthConditionAdapter
 import com.nature_farm.android.homepage.recyclerview.ProductAdapter
 import com.nature_farm.android.homepage.utils.Data
 
@@ -16,9 +18,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         setCategoryAdapter()
         setFlashSaleRecyclerView()
+        setHealthConditionRecyclerView()
+        setExclusiveBrandRecyclerView()
     }
 
-    fun setCategoryAdapter() {
+    private fun setCategoryAdapter() {
         val adapter = CategoryAdapter(Data.categories())
         binding.rvCategories.adapter = adapter
         binding.rvCategories.layoutManager =
@@ -26,11 +30,27 @@ class MainActivity : AppCompatActivity() {
         binding.rvCategories.setHasFixedSize(true)
     }
 
-    fun setFlashSaleRecyclerView() {
+    private fun setFlashSaleRecyclerView() {
         val adapter = ProductAdapter(Data.products())
         binding.rvProducts.adapter = adapter
         binding.rvProducts.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         binding.rvProducts.setHasFixedSize(true)
     }
+
+    private fun setHealthConditionRecyclerView(){
+        val adapter = HealthConditionAdapter(Data.healthConditions())
+        binding.rvHealthCondition.adapter = adapter
+        binding.rvHealthCondition.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        binding.rvHealthCondition.setHasFixedSize(true)
+    }
+    private fun setExclusiveBrandRecyclerView(){
+        val adapter = ExclusiveBrandAdapter(Data.exclusiveBrand())
+        binding.rvExclusiveBrand.adapter = adapter
+        binding.rvExclusiveBrand.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        binding.rvExclusiveBrand.setHasFixedSize(true)
+
+    }
+
+
 }

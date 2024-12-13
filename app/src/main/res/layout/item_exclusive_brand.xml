@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:padding="8dp"
+    android:layout_margin="3dp"
+    android:background="@drawable/layout_health_condition_background"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/logo_brand_1"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/ic_on"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </ImageView>
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/logo_brand_2"
+        android:layout_width="110dp"
+        android:layout_height="30dp"
+        app:shapeAppearanceOverlay="@style/CustomImageViewCorner5"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ic_on_2"
+        android:background="@color/black_5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo_brand_1">
+
+    </com.google.android.material.imageview.ShapeableImageView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
