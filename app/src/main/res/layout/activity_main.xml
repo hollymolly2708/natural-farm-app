@@ -1,674 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layout_parent"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment_container"
         android:layout_width="match_parent"
-        android:background="@color/white"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
+    </androidx.fragment.app.FragmentContainerView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+
+        android:background="@drawable/background_bottom_bar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <!-- Layout Home -->
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_toolbar"
+            android:id="@+id/layout_home"
             android:layout_width="0dp"
-            android:layout_height="145dp"
-            android:background="@drawable/layout_toolbar_background"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.2">
 
             <ImageView
-                android:id="@+id/iv_menu"
-                android:layout_width="25dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="32dp"
-                android:src="@drawable/ic_menu"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-            </ImageView>
-
-
-            <ImageView
-                android:id="@+id/iv_bag"
-                android:layout_width="25dp"
-                android:layout_height="28dp"
-                android:layout_marginEnd="16dp"
-                android:src="@drawable/ic_bag"
-
-                app:layout_constraintBottom_toBottomOf="@+id/iv_menu"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/iv_menu">
-
-            </ImageView>
-
-            <ImageView
-                android:id="@+id/iv_notification"
-                android:layout_width="25dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginEnd="16dp"
-                android:src="@drawable/ic_notification"
-                app:layout_constraintBottom_toBottomOf="@+id/iv_bag"
-                app:layout_constraintEnd_toStartOf="@+id/iv_bag"
-                app:layout_constraintTop_toTopOf="@+id/iv_bag">
-
-            </ImageView>
-
-
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/edt_search"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/layout_search_background"
-                android:drawableStart="@drawable/ic_search"
-                android:drawablePadding="10dp"
-                android:fontFamily="@font/roboto_medium"
-                android:hint="Cari Nuvita Nuri Imuno 85%"
-                android:padding="10dp"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@+id/iv_menu"
-                app:layout_constraintEnd_toStartOf="@+id/iv_notification"
-                app:layout_constraintStart_toEndOf="@+id/iv_menu"
-                app:layout_constraintTop_toTopOf="@+id/iv_menu" />
-
-            <ImageView
-                android:id="@+id/iv_place"
-                android:layout_width="18dp"
-                android:layout_height="16dp"
-                android:layout_marginTop="16dp"
-                android:src="@drawable/ic_place"
-                app:layout_constraintStart_toStartOf="@+id/iv_menu"
-                app:layout_constraintTop_toBottomOf="@+id/edt_search">
-
-            </ImageView>
-
-            <TextView
-                android:id="@+id/tv_diantar_ke"
+                android:id="@+id/iv_home"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
-                android:text="Diantar ke: "
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/iv_place"
-                app:layout_constraintStart_toEndOf="@+id/iv_place"
-                app:layout_constraintTop_toTopOf="@+id/iv_place">
-
-            </TextView>
-
-            <TextView
-                android:id="@+id/tv_input_pilih_alamat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:text="Pilih alamat >"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_diantar_ke"
-                app:layout_constraintStart_toEndOf="@+id/tv_diantar_ke"
-                app:layout_constraintTop_toTopOf="@+id/tv_diantar_ke">
-
-            </TextView>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/layout_promo"
-            android:layout_width="match_parent"
-            android:layout_height="220dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="-35dp"
-            android:layout_marginEnd="20dp"
-            app:cardCornerRadius="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layout_toolbar">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:id="@+id/iv_coupon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="15dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:src="@drawable/ic_coupon"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                </ImageView>
-
-                <TextView
-                    android:id="@+id/tv_ada_promo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:text="Ada Promo menarik untuk Anda!"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/iv_coupon"
-                    app:layout_constraintStart_toEndOf="@+id/iv_coupon"
-                    app:layout_constraintTop_toTopOf="@+id/iv_coupon">
-
-                </TextView>
-
-                <TextView
-                    android:id="@+id/tv_masuk_untuk_promo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="Masuk untuk nikmati semua promo"
-                    android:textColor="@color/dark_gray"
-                    android:textSize="12sp"
-                    app:layout_constraintStart_toStartOf="@+id/iv_coupon"
-                    app:layout_constraintTop_toBottomOf="@+id/iv_coupon">
-
-                </TextView>
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn_login"
-                    android:layout_width="70dp"
-                    android:layout_height="30dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="16dp"
-                    android:background="@drawable/button_login_background"
-                    android:backgroundTint="@null"
-                    android:text="Login"
-                    android:textAllCaps="false"
-                    android:textColor="@color/dark_green"
-                    android:textSize="14sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/tv_masuk_untuk_promo"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/tv_ada_promo">
-
-                </androidx.appcompat.widget.AppCompatButton>
-
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/iv_promo"
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/ic_carousel_1"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:shapeAppearanceOverlay="@style/CustomImageViewCorner">
-
-                </com.google.android.material.imageview.ShapeableImageView>
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.cardview.widget.CardView>
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_categories"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layout_promo"
-            tools:layout_height="100dp"
-            tools:listitem="@layout/item_category">
-
-        </androidx.recyclerview.widget.RecyclerView>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_flash_sale"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/layout_flash_sale_background"
-            android:backgroundTint="@null"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rv_categories">
-
-            <TextView
-                android:id="@+id/tv_lihat_semua"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:text="Lihat semua"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-            </TextView>
-
-            <TextView
-                android:id="@+id/tv_flash_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-
-                android:text="Fl"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="italic|bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-            </TextView>
-
-            <ImageView
-                android:id="@+id/iv_flash"
-                android:layout_width="15dp"
-                android:layout_height="20dp"
-                android:src="@drawable/ic_flash"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_flash_1"
-                app:layout_constraintStart_toEndOf="@+id/tv_flash_1"
-                app:layout_constraintTop_toTopOf="@+id/tv_flash_1">
-
-            </ImageView>
-
-            <TextView
-                android:id="@+id/tv_flash_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:text="sh"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="italic|bold"
-                app:layout_constraintBottom_toBottomOf="@+id/iv_flash"
-                app:layout_constraintStart_toEndOf="@+id/iv_flash"
-                app:layout_constraintTop_toTopOf="@+id/iv_flash">
-
-            </TextView>
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:layout_marginStart="8dp"
-                android:text="Sale"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="italic|bold"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_flash_2"
-                app:layout_constraintStart_toEndOf="@+id/tv_flash_2"
-                app:layout_constraintTop_toTopOf="@+id/tv_flash_2">
-
-            </TextView>
-
-            <TextView
-                android:id="@+id/tv_input_hours"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:background="@drawable/countdown_timer_minutes_background"
-                android:padding="5dp"
-                android:text="01"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="10sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/textView2"
-                app:layout_constraintStart_toEndOf="@+id/textView2"
-                app:layout_constraintTop_toTopOf="@+id/textView2">
-
-            </TextView>
-
-            <TextView
-                android:id="@+id/divide_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:text=":"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="13sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_input_hours"
-                app:layout_constraintStart_toEndOf="@+id/tv_input_hours"
-                app:layout_constraintTop_toTopOf="@+id/tv_input_hours">
-
-            </TextView>
-
-            <TextView
-                android:id="@+id/tv_input_minutes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/countdown_timer_minutes_background"
-                android:padding="5dp"
-                android:text="00"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="10sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/divide_1"
-                app:layout_constraintStart_toEndOf="@+id/divide_1"
-                app:layout_constraintTop_toTopOf="@+id/divide_1">
-
-            </TextView>
-
-            <TextView
-                android:id="@+id/divide_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:text=":"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="13sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_input_minutes"
-                app:layout_constraintStart_toEndOf="@+id/tv_input_minutes"
-                app:layout_constraintTop_toTopOf="@+id/tv_input_minutes"
-                app:layout_constraintVertical_bias="0.666">
-
-            </TextView>
-
-            <TextView
-                android:id="@+id/tv_input_seconds"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/countdown_timer_minutes_background"
-                android:padding="5dp"
-                android:text="00"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="10sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_input_minutes"
-                app:layout_constraintStart_toEndOf="@+id/divide_2"
-                app:layout_constraintTop_toTopOf="@+id/divide_2">
-
-            </TextView>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_products"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="16dp"
+                android:src="@drawable/ic_home"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_lihat_semua" />
-
-
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <!-- Layout Product -->
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_banner"
+            android:id="@+id/layout_product"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layout_flash_sale">
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/layout_home"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.2">
 
             <ImageView
-                android:id="@+id/iv_small_banner"
-                android:layout_width="220dp"
-                android:layout_height="110dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/ic_banner_1"
+                android:id="@+id/iv_product"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_product"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </ImageView>
+        <!-- Layout Favorite -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_favorite"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/layout_product"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.2">
 
             <ImageView
-                android:id="@+id/iv_small_banner_1"
-                android:layout_width="150dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="8dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/ic_banner_2"
+                android:id="@+id/iv_favorite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_favorite"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/iv_small_banner"
-                app:layout_constraintTop_toTopOf="@+id/iv_small_banner">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </ImageView>
-
+        <!-- Layout Order -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_order"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/layout_favorite"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.2">
 
             <ImageView
-                android:id="@+id/iv_small_banner_2"
-                android:layout_width="150dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="2dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/ic_banner_3"
-                app:layout_constraintBottom_toBottomOf="@+id/iv_small_banner"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/iv_small_banner"
-                app:layout_constraintTop_toBottomOf="@+id/iv_small_banner_1">
-
-            </ImageView>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_health_condition"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layout_banner">
-
-            <TextView
-                android:id="@+id/tv_shop_by_health_condition"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/text_health_conditions_background"
-                android:fontFamily="@font/roboto_bold"
-                android:padding="10dp"
-                android:text="Shop By Health Conditions"
-                android:textAlignment="center"
-                android:textColor="@color/dark_cyan"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-            </TextView>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_health_condition"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_shop_by_health_condition">
-
-            </androidx.recyclerview.widget.RecyclerView>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_brand"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layout_health_condition">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:background="@drawable/brand_gradient_background"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <TextView
-                android:id="@+id/tv_exclusive_brand"
+                android:id="@+id/iv_order"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Exclusive Brand"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-            </TextView>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_exclusive_brand"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="8dp"
+                android:src="@drawable/ic_bill"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_exclusive_brand">
-
-            </androidx.recyclerview.widget.RecyclerView>
-
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <!-- Layout Profile -->
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_best_seller"
+            android:id="@+id/layout_profile"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layout_brand">
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/layout_order"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.2">
 
-            <TextView
-                android:id="@+id/tv_best_seller"
+            <ImageView
+                android:id="@+id/iv_profile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="6dp"
-                android:text="Best Seller"
-                android:textColor="@color/teal_green"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_show_more"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tv_show_more">
-
-            </TextView>
-
-            <TextView
-                android:id="@+id/tv_show_more"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="4dp"
-                android:background="@drawable/text_show_more_background"
-                android:drawableEnd="@drawable/ic_arrow_outward"
-                android:drawablePadding="3dp"
-                android:padding="8dp"
-                android:text="Show More"
-                android:textAlignment="center"
-                android:textColor="@color/teal_green"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-            </TextView>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_best_seller_products"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
+                android:src="@drawable/ic_profile"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_show_more" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_article"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layout_best_seller">
-
-            <TextView
-                android:id="@+id/tv_artikel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="6dp"
-                android:text="Artikel"
-                android:textColor="@color/teal_green"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_lihat_semua_artikel"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tv_lihat_semua_artikel">
-
-            </TextView>
-
-            <TextView
-                android:id="@+id/tv_lihat_semua_artikel"
-                android:layout_width="wrap_content"
-                android:layout_height="22dp"
-                android:layout_marginEnd="8dp"
-                android:text="Lihat semua"
-                android:textColor="@color/green"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-            </TextView>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_article"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_lihat_semua_artikel">
-
-            </androidx.recyclerview.widget.RecyclerView>
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-</androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

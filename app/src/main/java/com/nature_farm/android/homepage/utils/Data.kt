@@ -84,6 +84,17 @@ object Data {
             )
         )
 
+        article.add(
+            Article(
+                R.drawable.ic_article_2,
+                "Health",
+                "Enema Kopi yang Mengandung Manfaat dan Efek Sampingnya",
+                "Richard",
+                R.drawable.ic_person,
+                "18 Jul 2024"
+            )
+        )
+
         return article
     }
 }

@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.bumptech.glide.Glide
 import com.nature_farm.android.homepage.databinding.ItemHealthConditionBinding
 import com.nature_farm.android.homepage.model.HealthCondition
 
@@ -13,7 +14,13 @@ class HealthConditionAdapter(private val healthConditions: ArrayList<HealthCondi
         parent: ViewGroup,
         viewType: Int,
     ): HealthConditionAdapter.HealthConditionViewHolder {
-        return HealthConditionViewHolder(ItemHealthConditionBinding.inflate(LayoutInflater.from(parent.context),parent, false))
+        return HealthConditionViewHolder(
+            ItemHealthConditionBinding.inflate(
+                LayoutInflater.from(
+                    parent.context
+                ), parent, false
+            )
+        )
     }
 
     override fun onBindViewHolder(
@@ -21,7 +28,7 @@ class HealthConditionAdapter(private val healthConditions: ArrayList<HealthCondi
         position: Int,
     ) {
         val data = healthConditions[position]
-        holder.binding.ivHealthCondition.setImageResource(data.image)
+        Glide.with(holder.binding.root).load(data.image).into(holder.binding.ivHealthCondition)
         holder.binding.tvHealthCondition.text = data.name
     }
 

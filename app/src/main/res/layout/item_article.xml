@@ -3,9 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="300dp"
-    android:padding="8dp"
-    android:layout_margin="3dp">
+    android:layout_height="wrap_content"
+    android:layout_marginStart="3dp"
+    android:layout_marginTop="3dp"
+    android:layout_marginBottom="3dp"
+    android:padding="8dp">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/iv_article_image"
@@ -57,7 +59,7 @@
         android:id="@+id/iv_author_image"
         android:layout_width="23dp"
         android:layout_height="23dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="8dp"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_person"
         app:layout_constraintStart_toStartOf="@+id/tv_input_article_title"
