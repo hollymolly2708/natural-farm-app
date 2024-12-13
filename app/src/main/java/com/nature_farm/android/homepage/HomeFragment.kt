@@ -5,20 +5,29 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.viewpager2.widget.ViewPager2
 import com.nature_farm.android.homepage.databinding.FragmentHomeBinding
+import com.nature_farm.android.homepage.model.SliderImage
 import com.nature_farm.android.homepage.recyclerview.ArticleAdapter
+import com.nature_farm.android.homepage.recyclerview.ImageSliderAdapter
 import com.nature_farm.android.homepage.recyclerview.CategoryAdapter
 import com.nature_farm.android.homepage.recyclerview.ExclusiveBrandAdapter
 import com.nature_farm.android.homepage.recyclerview.HealthConditionAdapter
 import com.nature_farm.android.homepage.recyclerview.ProductAdapter
-import com.nature_farm.android.homepage.utils.Data
 
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
+    private var pageChangeListener: ViewPager2.OnPageChangeCallback? = null
+    private val params = LinearLayout.LayoutParams(
+        LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT
+    ).apply { setMargins(3, 0, 3, 0) }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -36,6 +45,8 @@ class HomeFragment : Fragment() {
         setExclusiveBrandRecyclerView()
         setBestSellerRecyclerview()
         setArticleRecyclerview()
+        setupCarousel(Data.carousel())
+        setupBanner(Data.banner())
     }
 
     private fun setCategoryAdapter() {
@@ -54,31 +65,92 @@ class HomeFragment : Fragment() {
         binding.rvProducts.setHasFixedSize(true)
     }
 
-    private fun setHealthConditionRecyclerView(){
+    private fun setHealthConditionRecyclerView() {
         val adapter = HealthConditionAdapter(Data.healthConditions())
         binding.rvHealthCondition.adapter = adapter
-        binding.rvHealthCondition.layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
+        binding.rvHealthCondition.layoutManager =
+            LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
         binding.rvHealthCondition.setHasFixedSize(true)
     }
-    private fun setExclusiveBrandRecyclerView(){
+
+    private fun setExclusiveBrandRecyclerView() {
         val adapter = ExclusiveBrandAdapter(Data.exclusiveBrand())
         binding.rvExclusiveBrand.adapter = adapter
-        binding.rvExclusiveBrand.layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
+        binding.rvExclusiveBrand.layoutManager =
+            LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
         binding.rvExclusiveBrand.setHasFixedSize(true)
 
     }
 
-    private fun setBestSellerRecyclerview(){
+    private fun setBestSellerRecyclerview() {
         val adapter = ProductAdapter(Data.products())
         binding.rvBestSellerProducts.adapter = adapter
-        binding.rvBestSellerProducts.layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
+        binding.rvBestSellerProducts.layoutManager =
+            LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
         binding.rvBestSellerProducts.setHasFixedSize(true)
     }
 
-    private fun setArticleRecyclerview(){
+    private fun setArticleRecyclerview() {
         val adapter = ArticleAdapter(Data.article())
         binding.rvArticle.adapter = adapter
-        binding.rvArticle.layoutManager= LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
+        binding.rvArticle.layoutManager =
+            LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
         binding.rvArticle.setHasFixedSize(true)
+    }
+
+    private fun setupCarousel(sliderImages: List<SliderImage?>?) {
+        val imageAdapter = ImageSliderAdapter()
+        binding.vpCarousel.adapter = imageAdapter
+        binding.slideDotLL.removeAllViews()
+
+        imageAdapter.submitList(sliderImages)
+        sliderImages?.let {
+            val dotsImage = Array(it.size) { ImageView(requireActivity()) }
+            dotsImage.forEach { dot ->
+                dot.setImageResource(R.drawable.non_active_dot)
+                binding.slideDotLL.addView(dot, params)
+            }
+
+            dotsImage[0].setImageResource(R.drawable.active_dot)
+            pageChangeListener = object : ViewPager2.OnPageChangeCallback() {
+                override fun onPageSelected(position: Int) {
+                    dotsImage.forEachIndexed { index, imageView ->
+                        imageView.setImageResource(if (position == index) R.drawable.active_dot else R.drawable.non_active_dot)
+                    }
+                }
+            }
+            binding.vpCarousel.registerOnPageChangeCallback(pageChangeListener!!)
+        }
+    }
+
+    private fun setupBanner(sliderImages: List<SliderImage?>?) {
+        val imageAdapter = ImageSliderAdapter()
+        binding.vpBanner.adapter = imageAdapter
+        binding.slideDotLL2.removeAllViews()
+
+        imageAdapter.submitList(sliderImages)
+        sliderImages?.let {
+            val dotsImage = Array(it.size) { ImageView(requireActivity()) }
+            dotsImage.forEach { dot ->
+                dot.setImageResource(R.drawable.non_active_dot)
+                binding.slideDotLL2.addView(dot, params)
+            }
+
+            dotsImage[0].setImageResource(R.drawable.active_dot)
+            pageChangeListener = object : ViewPager2.OnPageChangeCallback() {
+                override fun onPageSelected(position: Int) {
+                    dotsImage.forEachIndexed { index, imageView ->
+                        imageView.setImageResource(if (position == index) R.drawable.active_dot else R.drawable.non_active_dot)
+                    }
+                }
+            }
+            binding.vpBanner.registerOnPageChangeCallback(pageChangeListener!!)
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        pageChangeListener?.let { binding.vpCarousel.unregisterOnPageChangeCallback(it) }
+        pageChangeListener?.let { binding.vpBanner.unregisterOnPageChangeCallback(it) }
     }
 }

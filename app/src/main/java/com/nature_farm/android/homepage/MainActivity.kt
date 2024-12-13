@@ -2,15 +2,7 @@ package com.nature_farm.android.homepage
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.nature_farm.android.homepage.databinding.ActivityMainBinding
-import com.nature_farm.android.homepage.model.Article
-import com.nature_farm.android.homepage.recyclerview.ArticleAdapter
-import com.nature_farm.android.homepage.recyclerview.CategoryAdapter
-import com.nature_farm.android.homepage.recyclerview.ExclusiveBrandAdapter
-import com.nature_farm.android.homepage.recyclerview.HealthConditionAdapter
-import com.nature_farm.android.homepage.recyclerview.ProductAdapter
-import com.nature_farm.android.homepage.utils.Data
 
 class MainActivity : AppCompatActivity() {
     private var selectedTab: Int = 1

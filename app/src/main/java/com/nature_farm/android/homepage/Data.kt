@@ -1,7 +1,8 @@
-package com.nature_farm.android.homepage.utils
+package com.nature_farm.android.homepage
 
 import com.nature_farm.android.homepage.R
 import com.nature_farm.android.homepage.model.Article
+import com.nature_farm.android.homepage.model.SliderImage
 import com.nature_farm.android.homepage.model.Category
 import com.nature_farm.android.homepage.model.ExclusiveBrand
 import com.nature_farm.android.homepage.model.HealthCondition
@@ -39,7 +40,7 @@ object Data {
                 "10%",
                 R.drawable.ic_product_2,
                 "Rp 6.500",
-                "Rp. 5850",
+                "Rp. 5.850",
                 "4,9",
                 "Terjual 5rb+"
             )
@@ -96,5 +97,21 @@ object Data {
         )
 
         return article
+    }
+
+    fun carousel(): ArrayList<SliderImage> {
+        val sliderImages = ArrayList<SliderImage>()
+        sliderImages.add(SliderImage(1, R.drawable.ic_carousel_1))
+        sliderImages.add(SliderImage(2, R.drawable.ic_carousel_2))
+        sliderImages.add(SliderImage(3, R.drawable.ic_carousel_3))
+        return sliderImages
+    }
+
+    fun banner(): ArrayList<SliderImage> {
+        val sliderImages = ArrayList<SliderImage>()
+        sliderImages.add(SliderImage(1, R.drawable.ic_banner_1))
+        sliderImages.add(SliderImage(2, R.drawable.ic_banner_2))
+        sliderImages.add(SliderImage(3, R.drawable.ic_banner_3))
+        return sliderImages
     }
 }

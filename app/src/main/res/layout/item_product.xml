@@ -5,20 +5,31 @@
     android:id="@+id/cv_item_product"
     android:layout_width="190dp"
     android:layout_height="wrap_content"
-    android:layout_marginStart="4dp"
-    android:layout_marginEnd="4dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
     android:layout_marginBottom="8dp"
     app:cardCornerRadius="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/iv_product"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="30dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_product_1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </ImageView>
 
         <TextView
             android:id="@+id/tv_input_discount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:background="@drawable/text_discount_background"
             android:drawableStart="@drawable/ic_discount_2"
             android:paddingStart="10dp"
@@ -30,23 +41,14 @@
             android:textColor="@color/old_red"
             android:textSize="13sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/iv_product"
             app:layout_constraintEnd_toEndOf="@+id/iv_product"
             app:layout_constraintStart_toEndOf="@+id/iv_product"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="@+id/iv_product">
 
         </TextView>
 
-        <ImageView
-            android:id="@+id/iv_product"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_product_1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_input_discount">
 
-        </ImageView>
 
         <TextView
             android:id="@+id/tv_input_product_brand"
@@ -86,11 +88,13 @@
 
         <TextView
             android:id="@+id/tv_input_price_original"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="40dp"
             android:text="Rp 6.500"
             android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/tv_input_star"
             app:layout_constraintStart_toStartOf="@+id/tv_input_product_name"
             app:layout_constraintTop_toBottomOf="@+id/tv_input_product_name">
 
@@ -99,13 +103,14 @@
 
         <TextView
             android:id="@+id/tv_input_price_after_discount"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:text="Rp 5.850"
             android:textColor="@color/teal_green"
             android:textSize="15sp"
             android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/tv_input_price_original"
             app:layout_constraintStart_toStartOf="@+id/tv_input_product_name"
             app:layout_constraintTop_toBottomOf="@+id/tv_input_price_original">
 
@@ -128,12 +133,13 @@
 
         <TextView
             android:id="@+id/tv_input_terjual"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
+            android:layout_marginTop="4dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:text="Terjual 5rb+"
+            android:textAlignment="textEnd"
             android:textColor="@color/black"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
