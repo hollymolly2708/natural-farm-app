@@ -1,12 +1,12 @@
 package com.nature_farm.android.homepage
 
 import com.nature_farm.android.homepage.R
-import com.nature_farm.android.homepage.model.Article
-import com.nature_farm.android.homepage.model.SliderImage
-import com.nature_farm.android.homepage.model.Category
-import com.nature_farm.android.homepage.model.ExclusiveBrand
-import com.nature_farm.android.homepage.model.HealthCondition
-import com.nature_farm.android.homepage.model.Product
+import com.nature_farm.android.homepage.core.data.domain.model.Article
+import com.nature_farm.android.homepage.core.data.domain.model.SliderImage
+import com.nature_farm.android.homepage.core.data.domain.model.Category
+import com.nature_farm.android.homepage.core.data.domain.model.ExclusiveBrand
+import com.nature_farm.android.homepage.core.data.domain.model.HealthCondition
+import com.nature_farm.android.homepage.core.data.domain.model.Product
 
 object Data {
     fun categories(): ArrayList<Category> {
@@ -23,6 +23,7 @@ object Data {
         val product = ArrayList<Product>()
         product.add(
             Product(
+                1,
                 "BREYLEE",
                 "BREYLEE Aloe Vera Clay Mask 8 Gr",
                 "10%",
@@ -35,6 +36,7 @@ object Data {
         )
         product.add(
             Product(
+                2,
                 "BREYLEE",
                 "BREYLEE Orange Blossom Clay Mask 8 Gr",
                 "10%",

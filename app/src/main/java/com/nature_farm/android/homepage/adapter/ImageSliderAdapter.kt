@@ -1,12 +1,11 @@
-package com.nature_farm.android.homepage.recyclerview
+package com.nature_farm.android.homepage.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.nature_farm.android.homepage.databinding.ItemImageSliderBinding
-import com.nature_farm.android.homepage.model.SliderImage
+import com.nature_farm.android.homepage.core.data.domain.model.SliderImage
 
 class ImageSliderAdapter :
     androidx.recyclerview.widget.ListAdapter<SliderImage, ImageSliderAdapter.ViewHolder>(
@@ -25,7 +24,7 @@ class ImageSliderAdapter :
 
     class ViewHolder(val binding: ItemImageSliderBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bindData(item: SliderImage) {
-            Glide.with(binding.root).load(item.image).centerCrop().into(binding.ivCarousel)
+            binding.ivImageSlider.setImageResource(item.image)
         }
     }
 

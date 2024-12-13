@@ -10,13 +10,13 @@ import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.nature_farm.android.homepage.databinding.FragmentHomeBinding
-import com.nature_farm.android.homepage.model.SliderImage
-import com.nature_farm.android.homepage.recyclerview.ArticleAdapter
-import com.nature_farm.android.homepage.recyclerview.ImageSliderAdapter
-import com.nature_farm.android.homepage.recyclerview.CategoryAdapter
-import com.nature_farm.android.homepage.recyclerview.ExclusiveBrandAdapter
-import com.nature_farm.android.homepage.recyclerview.HealthConditionAdapter
-import com.nature_farm.android.homepage.recyclerview.ProductAdapter
+import com.nature_farm.android.homepage.core.data.domain.model.SliderImage
+import com.nature_farm.android.homepage.adapter.ArticleAdapter
+import com.nature_farm.android.homepage.adapter.ImageSliderAdapter
+import com.nature_farm.android.homepage.adapter.CategoryAdapter
+import com.nature_farm.android.homepage.adapter.ExclusiveBrandAdapter
+import com.nature_farm.android.homepage.adapter.HealthConditionAdapter
+import com.nature_farm.android.homepage.adapter.ProductAdapter
 
 
 class HomeFragment : Fragment() {

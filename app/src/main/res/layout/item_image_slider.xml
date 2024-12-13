@@ -4,8 +4,9 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/iv_carousel"
+        android:id="@+id/iv_image_slider"
         android:layout_width="match_parent"
+        android:scaleType="fitXY"
         app:shapeAppearanceOverlay="@style/CustomImageViewCorner"
         android:layout_height="match_parent">
 

@@ -1,12 +1,11 @@
-package com.nature_farm.android.homepage.recyclerview
+package com.nature_farm.android.homepage.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.bumptech.glide.Glide
 import com.nature_farm.android.homepage.databinding.ItemCategoryBinding
-import com.nature_farm.android.homepage.model.Category
+import com.nature_farm.android.homepage.core.data.domain.model.Category
 
 class CategoryAdapter(private val categories: ArrayList<Category>) :
     RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
@@ -27,7 +26,7 @@ class CategoryAdapter(private val categories: ArrayList<Category>) :
     override fun onBindViewHolder(holder: CategoryAdapter.CategoryViewHolder, position: Int) {
         val data = categories[position]
         holder.binding.tvOnSale.text = data.categoryName
-        Glide.with(holder.binding.root).load(data.image).into(holder.binding.ivOnSale)
+        holder.binding.ivOnSale.setImageResource(data.image)
 
     }
 

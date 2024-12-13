@@ -1,12 +1,11 @@
-package com.nature_farm.android.homepage.recyclerview
+package com.nature_farm.android.homepage.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.bumptech.glide.Glide
 import com.nature_farm.android.homepage.databinding.ItemArticleBinding
-import com.nature_farm.android.homepage.model.Article
+import com.nature_farm.android.homepage.core.data.domain.model.Article
 
 class ArticleAdapter(private val articles: ArrayList<Article>) :
     RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder>() {
@@ -25,8 +24,8 @@ class ArticleAdapter(private val articles: ArrayList<Article>) :
 
     override fun onBindViewHolder(holder: ArticleAdapter.ArticleViewHolder, position: Int) {
         val data = articles[position]
-        Glide.with(holder.binding.root).load(data.authorImage).into(holder.binding.ivAuthorImage)
-        Glide.with(holder.binding.root).load(data.articleImage).into(holder.binding.ivArticleImage)
+        holder.binding.ivAuthorImage.setImageResource(data.authorImage)
+        holder.binding.ivArticleImage.setImageResource(data.articleImage)
         holder.binding.tvInputArticleTitle.text = data.articleTitle
         holder.binding.tvInputArticleCategory.text = data.articleCategory
         holder.binding.tvInputAuthorName.text = data.authorName

@@ -1,12 +1,11 @@
-package com.nature_farm.android.homepage.recyclerview
+package com.nature_farm.android.homepage.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.bumptech.glide.Glide
 import com.nature_farm.android.homepage.databinding.ItemHealthConditionBinding
-import com.nature_farm.android.homepage.model.HealthCondition
+import com.nature_farm.android.homepage.core.data.domain.model.HealthCondition
 
 class HealthConditionAdapter(private val healthConditions: ArrayList<HealthCondition>) :
     RecyclerView.Adapter<HealthConditionAdapter.HealthConditionViewHolder>() {
@@ -28,7 +27,7 @@ class HealthConditionAdapter(private val healthConditions: ArrayList<HealthCondi
         position: Int,
     ) {
         val data = healthConditions[position]
-        Glide.with(holder.binding.root).load(data.image).into(holder.binding.ivHealthCondition)
+        holder.binding.ivHealthCondition.setImageResource(data.image)
         holder.binding.tvHealthCondition.text = data.name
     }
 

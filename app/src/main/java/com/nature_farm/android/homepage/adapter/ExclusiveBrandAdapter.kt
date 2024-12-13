@@ -1,12 +1,11 @@
-package com.nature_farm.android.homepage.recyclerview
+package com.nature_farm.android.homepage.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.bumptech.glide.Glide
 import com.nature_farm.android.homepage.databinding.ItemExclusiveBrandBinding
-import com.nature_farm.android.homepage.model.ExclusiveBrand
+import com.nature_farm.android.homepage.core.data.domain.model.ExclusiveBrand
 
 class ExclusiveBrandAdapter(private val exclusiveBrands: ArrayList<ExclusiveBrand>) :
     RecyclerView.Adapter<ExclusiveBrandAdapter.ExclusiveBrandViewHolder>() {
@@ -29,8 +28,10 @@ class ExclusiveBrandAdapter(private val exclusiveBrands: ArrayList<ExclusiveBran
     ) {
         val data = exclusiveBrands[position]
 
-        Glide.with(holder.binding.root).load(data.imageOne).into(holder.binding.logoBrand1)
-        Glide.with(holder.binding.root).load(data.imageTwo).into(holder.binding.logoBrand2)
+
+        holder.binding.logoBrand1.setImageResource(data.imageOne)
+        holder.binding.logoBrand2.setImageResource(data.imageTwo)
+
     }
 
     override fun getItemCount(): Int {
