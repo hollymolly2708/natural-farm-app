@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
         setFlashSaleRecyclerView()
         setHealthConditionRecyclerView()
         setExclusiveBrandRecyclerView()
+        setBestSellerRecyclerview()
     }
 
     private fun setCategoryAdapter() {
@@ -50,6 +51,13 @@ class MainActivity : AppCompatActivity() {
         binding.rvExclusiveBrand.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         binding.rvExclusiveBrand.setHasFixedSize(true)
 
+    }
+
+    private fun setBestSellerRecyclerview(){
+        val adapter = ProductAdapter(Data.products())
+        binding.rvBestSellerProducts.adapter = adapter
+        binding.rvBestSellerProducts.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        binding.rvBestSellerProducts.setHasFixedSize(true)
     }
 
 

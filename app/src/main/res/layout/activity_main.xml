@@ -346,7 +346,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/countdown_timer_minutes_background"
                 android:padding="5dp"
-                android:text="01"
+                android:text="00"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="10sp"
@@ -380,7 +380,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/countdown_timer_minutes_background"
                 android:padding="5dp"
-                android:text="01"
+                android:text="00"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="10sp"
@@ -507,7 +507,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_brand"
             android:layout_width="0dp"
-            android:layout_height="200dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -546,12 +546,71 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_exclusive_brand">
 
             </androidx.recyclerview.widget.RecyclerView>
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_best_seller"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_brand">
+
+            <TextView
+                android:id="@+id/tv_best_seller"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:text="Best Seller"
+                android:textColor="@color/teal_green"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_show_more"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_show_more">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/tv_show_more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/text_show_more_background"
+                android:drawableEnd="@drawable/ic_arrow_outward"
+                android:drawablePadding="3dp"
+                android:padding="8dp"
+                android:text="Show More"
+                android:textAlignment="center"
+                android:textColor="@color/teal_green"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            </TextView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_best_seller_products"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_show_more" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

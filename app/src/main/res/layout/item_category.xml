@@ -9,9 +9,11 @@
 
     <ImageView
         android:id="@+id/iv_on_sale"
-        android:layout_width="30dp"
+        android:layout_width="50dp"
         android:layout_marginTop="5dp"
-        android:layout_height="40dp"
+        android:padding="10dp"
+        android:layout_height="50dp"
+        android:background="@drawable/category_background"
         android:src="@drawable/ic_discount"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
