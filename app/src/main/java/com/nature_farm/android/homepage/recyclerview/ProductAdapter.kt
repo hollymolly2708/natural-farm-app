@@ -29,6 +29,7 @@ class ProductAdapter(private val products: ArrayList<Product>) :
         holder.binding.tvInputStar.text = data.rating
         holder.binding.tvInputPriceOriginal.text = data.priceOriginal
         holder.binding.tvInputPriceAfterDiscount.text = data.priceAfterDiscount
+        holder.binding.tvInputDiscount.text = data.discount
     }
 
     override fun getItemCount(): Int {

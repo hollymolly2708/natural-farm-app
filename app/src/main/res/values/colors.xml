@@ -10,7 +10,9 @@
     <color name="old_green">#65AE81</color>
     <color name="dark_green">#0C8069</color>
     <color name="teal_green">#0A7C6D</color>
-    <color name="red">#DF2323</color>
+    <color name="old_red">#DF2323</color>
+    <color name="pink">#FDE8E8</color>
+    <color name="young_red">#EF6060</color>
     <color name="deep_teal_green">#03543F</color>
     <color name="dark_cyan">#0A7C6D</color>
     <color name="pale_mint_green">#E4F1DB</color>

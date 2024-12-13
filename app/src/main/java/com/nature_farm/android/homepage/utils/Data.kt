@@ -23,6 +23,7 @@ object Data {
             Product(
                 "BREYLEE",
                 "BREYLEE Aloe Vera Clay Mask 8 Gr",
+                "10%",
                 R.drawable.ic_product_1,
                 "Rp 6.500",
                 "Rp 5.850",
@@ -34,6 +35,7 @@ object Data {
             Product(
                 "BREYLEE",
                 "BREYLEE Orange Blossom Clay Mask 8 Gr",
+                "10%",
                 R.drawable.ic_product_2,
                 "Rp 6.500",
                 "Rp. 5850",
@@ -57,7 +59,12 @@ object Data {
     fun exclusiveBrand(): ArrayList<ExclusiveBrand> {
         val exclusiveBrand = ArrayList<ExclusiveBrand>()
         exclusiveBrand.add(ExclusiveBrand(R.drawable.ic_on, R.drawable.ic_on_2))
-        exclusiveBrand.add(ExclusiveBrand(R.drawable.ic_manuka_health, R.drawable.ic_manuka_health_2))
+        exclusiveBrand.add(
+            ExclusiveBrand(
+                R.drawable.ic_manuka_health,
+                R.drawable.ic_manuka_health_2
+            )
+        )
         exclusiveBrand.add(ExclusiveBrand(R.drawable.ic_childlife, R.drawable.ic_childlife_2))
         exclusiveBrand.add(ExclusiveBrand(R.drawable.ic_wellness, R.drawable.ic_wellness_2))
         return exclusiveBrand
