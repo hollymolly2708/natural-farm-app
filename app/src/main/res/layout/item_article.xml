@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="300dp"
+    android:padding="8dp"
+    android:layout_margin="3dp">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_article_image"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_article_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/CustomImageViewCorner">
+
+    </com.google.android.material.imageview.ShapeableImageView>
+
+    <TextView
+        android:id="@+id/tv_input_article_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/text_show_more_background"
+        android:paddingStart="3dp"
+        android:paddingTop="4dp"
+        android:paddingEnd="3dp"
+        android:paddingBottom="4dp"
+        android:text="Beauty"
+        android:textColor="@color/teal_green"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="@+id/iv_article_image"
+        app:layout_constraintTop_toBottomOf="@+id/iv_article_image">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/tv_input_article_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:maxWidth="250dp"
+        android:text="5 Rekomendasi Hair Tonic untuk Rambut Rontok yang Paling Ampuh"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/iv_article_image"
+        app:layout_constraintStart_toStartOf="@+id/iv_article_image"
+        app:layout_constraintTop_toBottomOf="@+id/tv_input_article_category">
+
+    </TextView>
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_author_image"
+        android:layout_width="23dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="4dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_person"
+        app:layout_constraintStart_toStartOf="@+id/tv_input_article_title"
+        app:layout_constraintTop_toBottomOf="@+id/tv_input_article_title"
+        app:shapeAppearanceOverlay="@style/CustomImageViewCorner">
+
+    </com.google.android.material.imageview.ShapeableImageView>
+
+    <TextView
+        android:id="@+id/tv_input_author_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="Richard"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_author_image"
+        app:layout_constraintStart_toEndOf="@+id/iv_author_image"
+        app:layout_constraintTop_toTopOf="@+id/iv_author_image">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/tv_dot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="."
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_input_author_name"
+        app:layout_constraintStart_toEndOf="@+id/tv_input_author_name"
+        app:layout_constraintTop_toTopOf="@+id/tv_input_author_name">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/tv_input_publisher_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="18 Jul 2024"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_dot"
+        app:layout_constraintStart_toEndOf="@+id/tv_dot"
+        app:layout_constraintTop_toTopOf="@+id/tv_dot">
+
+    </TextView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

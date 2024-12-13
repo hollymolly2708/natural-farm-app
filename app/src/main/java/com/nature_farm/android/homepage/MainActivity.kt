@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nature_farm.android.homepage.databinding.ActivityMainBinding
+import com.nature_farm.android.homepage.model.Article
+import com.nature_farm.android.homepage.recyclerview.ArticleAdapter
 import com.nature_farm.android.homepage.recyclerview.CategoryAdapter
 import com.nature_farm.android.homepage.recyclerview.ExclusiveBrandAdapter
 import com.nature_farm.android.homepage.recyclerview.HealthConditionAdapter
@@ -21,6 +23,7 @@ class MainActivity : AppCompatActivity() {
         setHealthConditionRecyclerView()
         setExclusiveBrandRecyclerView()
         setBestSellerRecyclerview()
+        setArticleRecyclerview()
     }
 
     private fun setCategoryAdapter() {
@@ -58,6 +61,13 @@ class MainActivity : AppCompatActivity() {
         binding.rvBestSellerProducts.adapter = adapter
         binding.rvBestSellerProducts.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         binding.rvBestSellerProducts.setHasFixedSize(true)
+    }
+
+    private fun setArticleRecyclerview(){
+        val adapter = ArticleAdapter(Data.article())
+        binding.rvArticle.adapter = adapter
+        binding.rvArticle.layoutManager= LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        binding.rvArticle.setHasFixedSize(true)
     }
 
 

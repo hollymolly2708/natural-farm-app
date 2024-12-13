@@ -1,6 +1,7 @@
 package com.nature_farm.android.homepage.utils
 
 import com.nature_farm.android.homepage.R
+import com.nature_farm.android.homepage.model.Article
 import com.nature_farm.android.homepage.model.Category
 import com.nature_farm.android.homepage.model.ExclusiveBrand
 import com.nature_farm.android.homepage.model.HealthCondition
@@ -68,5 +69,21 @@ object Data {
         exclusiveBrand.add(ExclusiveBrand(R.drawable.ic_childlife, R.drawable.ic_childlife_2))
         exclusiveBrand.add(ExclusiveBrand(R.drawable.ic_wellness, R.drawable.ic_wellness_2))
         return exclusiveBrand
+    }
+
+    fun article(): ArrayList<Article> {
+        val article = ArrayList<Article>()
+        article.add(
+            Article(
+                R.drawable.ic_article_1,
+                "Beauty",
+                "5 Rekomendasi Hair Tonic untuk Rambut Rontok yang Paling Ampuh",
+                "Richard",
+                R.drawable.ic_person,
+                "18 Jul 2024"
+            )
+        )
+
+        return article
     }
 }

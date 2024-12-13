@@ -5,8 +5,8 @@
     android:id="@+id/cv_item_product"
     android:layout_width="190dp"
     android:layout_height="wrap_content"
-    android:layout_marginStart="8dp"
-    android:layout_marginEnd="8dp"
+    android:layout_marginStart="4dp"
+    android:layout_marginEnd="4dp"
     android:layout_marginBottom="8dp"
     app:cardCornerRadius="10dp">
 
