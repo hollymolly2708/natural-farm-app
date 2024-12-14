@@ -23,15 +23,15 @@ object Data {
         val product = ArrayList<Product>()
         product.add(
             Product(
-                1,
-                "BREYLEE",
-                "BREYLEE Aloe Vera Clay Mask 8 Gr",
-                "10%",
-                R.drawable.ic_product_1,
-                "Rp 6.500",
-                "Rp 5.850",
-                "4,9",
-                "Terjual 5rb+"
+                id = 1,
+                brandName = "BREYLEE",
+                productName = "BREYLEE Aloe Vera Clay Mask 8 Gr",
+                discount = "10%",
+               productImage =  R.drawable.ic_product_1,
+                priceOriginal = "Rp 6.500",
+                priceAfterDiscount = "Rp 5.850",
+                rating ="4,9",
+                hasBeenSold = "Terjual 5rb+",
             )
         )
         product.add(
@@ -44,7 +44,7 @@ object Data {
                 "Rp 6.500",
                 "Rp. 5.850",
                 "4,9",
-                "Terjual 5rb+"
+                hasBeenSold = "Terjual 5rb+"
             )
         )
 

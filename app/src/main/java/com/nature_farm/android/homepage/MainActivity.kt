@@ -1,8 +1,9 @@
 package com.nature_farm.android.homepage
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.nature_farm.android.homepage.databinding.ActivityMainBinding
+import com.nature_farm.android.homepage.ui.main.order.OrderFragment
 
 class MainActivity : AppCompatActivity() {
     private var selectedTab: Int = 1

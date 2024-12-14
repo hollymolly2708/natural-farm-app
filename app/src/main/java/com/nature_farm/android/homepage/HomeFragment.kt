@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.nature_farm.android.homepage.databinding.FragmentHomeBinding
 import com.nature_farm.android.homepage.core.data.domain.model.SliderImage
@@ -61,7 +63,7 @@ class HomeFragment : Fragment() {
         val adapter = ProductAdapter(Data.products())
         binding.rvProducts.adapter = adapter
         binding.rvProducts.layoutManager =
-            LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
+            GridLayoutManager(requireActivity(),2,GridLayoutManager.VERTICAL,false)
         binding.rvProducts.setHasFixedSize(true)
     }
 
@@ -86,7 +88,7 @@ class HomeFragment : Fragment() {
         val adapter = ProductAdapter(Data.products())
         binding.rvBestSellerProducts.adapter = adapter
         binding.rvBestSellerProducts.layoutManager =
-            LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
+            GridLayoutManager(requireActivity(),2, GridLayoutManager.VERTICAL, false)
         binding.rvBestSellerProducts.setHasFixedSize(true)
     }
 

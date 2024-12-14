@@ -1,5 +1,6 @@
 package com.nature_farm.android.homepage.adapter
 
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -24,7 +25,10 @@ class ImageSliderAdapter :
 
     class ViewHolder(val binding: ItemImageSliderBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bindData(item: SliderImage) {
-            binding.ivImageSlider.setImageResource(item.image)
+
+
+                binding.ivImageSlider.setImageResource(item.image )
+
         }
     }
 

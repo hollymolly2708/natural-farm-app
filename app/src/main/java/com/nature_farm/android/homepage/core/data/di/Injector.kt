@@ -1,9 +1,13 @@
 package com.nature_farm.android.homepage.core.data.di
 
-import com.nature_farm.android.homepage.core.data.domain.usecase.ProductInteractor
-import com.nature_farm.android.homepage.core.data.domain.usecase.ProductUseCase
+import com.nature_farm.android.homepage.core.data.domain.usecase.product.ProductInteractor
+import com.nature_farm.android.homepage.core.data.domain.usecase.product.ProductUseCase
+import com.nature_farm.android.homepage.core.data.domain.usecase.user.UserInteractor
+import com.nature_farm.android.homepage.core.data.domain.usecase.user.UserUseCase
 import com.nature_farm.android.homepage.core.data.repository.ProductRepository
+import com.nature_farm.android.homepage.core.data.repository.UserRepository
 import com.nature_farm.android.homepage.core.data.source.remote.ProductRemoteDataSource
+import com.nature_farm.android.homepage.core.data.source.remote.UserRemoteDataSource
 import com.nature_farm.android.homepage.core.data.source.remote.network.ApiService
 import com.nature_farm.android.homepage.ui.ViewModelFactory
 import okhttp3.OkHttpClient
@@ -41,8 +45,20 @@ object Injector {
         return ProductInteractor(provideProductRepository())
     }
 
+    private fun provideUserRemoteDataSource(): UserRemoteDataSource {
+        return UserRemoteDataSource.getInstance(provideApiService())
+    }
+
+    private fun provideUserRepository(): UserRepository {
+        return UserRepository.getInstance(provideUserRemoteDataSource())
+    }
+
+    private fun provideUserInteractor(): UserUseCase {
+        return UserInteractor(provideUserRepository())
+    }
+
     fun provideViewModelFactory(): ViewModelFactory {
-        return ViewModelFactory(provideProductInteractor())
+        return ViewModelFactory(provideProductInteractor(), provideUserInteractor())
     }
 
 

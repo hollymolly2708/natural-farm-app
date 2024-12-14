@@ -9,6 +9,7 @@ data class Product(
     val priceOriginal: String? = null,
     val priceAfterDiscount: String? = null,
     val rating : String? = null,
+    val ratingCount : Int? = null,
     val category : String? = null,
     val description : String? = null,
     val hasBeenSold : String? = null

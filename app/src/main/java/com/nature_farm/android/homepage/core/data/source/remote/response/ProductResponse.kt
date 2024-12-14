@@ -1,6 +1,7 @@
 package com.nature_farm.android.homepage.core.data.source.remote.response
 
 import com.google.gson.annotations.SerializedName
+import java.math.BigDecimal
 
 data class ProductResponse(
 
@@ -14,7 +15,7 @@ data class ProductResponseItem(
 	val image: String? = null,
 
 	@field:SerializedName("price")
-	val price: Any? = null,
+	val price: BigDecimal? = null,
 
 	@field:SerializedName("rating")
 	val rating: Rating? = null,

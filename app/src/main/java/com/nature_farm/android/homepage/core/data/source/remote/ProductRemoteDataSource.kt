@@ -48,4 +48,28 @@ class ProductRemoteDataSource private constructor(private val apiService: ApiSer
 
         })
     }
+
+    fun getDetailProduct(productId: Int, callback: (ApiResponse<ProductResponseItem>) -> Unit) {
+        apiService.getDetailProducts(productId).enqueue(object : Callback<ProductResponseItem> {
+            override fun onResponse(
+                call: Call<ProductResponseItem>,
+                response: Response<ProductResponseItem>,
+            ) {
+                if (response.isSuccessful) {
+                    val body = response.body()
+                    if (body != null) {
+                        callback(ApiResponse.Success(body))
+                    } else {
+                        callback(ApiResponse.Error(response.message()))
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<ProductResponseItem>, t: Throwable) {
+                Log.e("detailProduct", t.message.toString())
+                callback(ApiResponse.Error(t.message.toString()))
+            }
+
+        })
+    }
 }
