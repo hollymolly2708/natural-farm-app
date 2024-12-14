@@ -7,7 +7,8 @@ import com.nature_farm.android.homepage.core.data.source.remote.ApiResponse
 import com.nature_farm.android.homepage.core.data.source.remote.UserRemoteDataSource
 import com.nature_farm.android.homepage.core.data.source.remote.response.UserResponse
 
-class UserRepository private constructor(private val userRemoteDataSource: UserRemoteDataSource): IUserRepository {
+class UserRepository private constructor(private val userRemoteDataSource: UserRemoteDataSource) :
+    IUserRepository {
     companion object {
         @Volatile
         private var INSTANCE: UserRepository? = null
@@ -20,7 +21,7 @@ class UserRepository private constructor(private val userRemoteDataSource: UserR
         }
     }
 
-  override  fun getUserProfile(userId: Int, callback: (Resource<User>) -> Unit) {
+    override fun getUserProfile(userId: Int, callback: (Resource<User>) -> Unit) {
         userRemoteDataSource.getUserProfile(userId) { apiResponse ->
             when (apiResponse) {
                 is ApiResponse.Success -> {
@@ -31,7 +32,8 @@ class UserRepository private constructor(private val userRemoteDataSource: UserR
                             name = name,
                             email = it.email,
                             username = it.username,
-                            address = address
+                            address = address,
+                            phone = it.phone
                         )
                         callback(Resource.Success(user))
                     }

@@ -9,7 +9,9 @@ import com.nature_farm.android.homepage.core.data.domain.usecase.user.UserUseCas
 
 class ProfileViewModel(private val userUseCase: UserUseCase) : ViewModel() {
     private val _user: MutableLiveData<User> = MutableLiveData()
+    private val _loading : MutableLiveData<Boolean> = MutableLiveData()
     val user: LiveData<User> = _user
+    val loading : LiveData<Boolean> = _loading
 
     fun getUserProfile(userId: Int) {
         userUseCase.getUserProfile(userId) { resource ->
@@ -18,14 +20,15 @@ class ProfileViewModel(private val userUseCase: UserUseCase) : ViewModel() {
                     resource.data?.let {
                         _user.value = it
                     }
+                    _loading.value = false
                 }
 
                 is Resource.Error -> {
-
+                    _loading.value = false
                 }
 
                 is Resource.Loading -> {
-
+                    _loading.value = true
                 }
             }
         }
