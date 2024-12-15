@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.nature_farm.android.homepage'
+    namespace 'com.natural_farm.android.e_commerce'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.nature_farm.android.homepage"
+        applicationId "com.natural_farm.android.e_commerce"
         minSdk 24
         targetSdk 34
         versionCode 1

@@ -23,5 +23,19 @@
         <item name="cornerSizeBottomRight">5dp</item>
     </style>
 
+    <style name="CustomImageViewCorner50" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">10dp</item>
+        <item name="cornerSizeTopRight">10dp</item>
+        <item name="cornerSizeBottomLeft">10dp</item>
+        <item name="cornerSizeBottomRight">10dp</item>
+    </style>
+
+    <style name="RightSlideAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_in_right</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_right</item>
+    </style>
+
+
     <style name="Theme.Homepageapp" parent="Base.Theme.Homepageapp" />
 </resources>
