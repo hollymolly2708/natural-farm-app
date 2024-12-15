@@ -10,10 +10,10 @@ import com.nature_farm.android.homepage.core.data.domain.usecase.product.Product
 
 class ProductViewModel(private val productUseCase: ProductUseCase) : ViewModel() {
     private val _products: MutableLiveData<List<Product>> = MutableLiveData()
-    private val _detailProduct : MutableLiveData<DetailProduct> = MutableLiveData()
+    private val _detailProduct: MutableLiveData<DetailProduct> = MutableLiveData()
     private val _loading: MutableLiveData<Boolean> = MutableLiveData()
 
-    val detailProduct : LiveData<DetailProduct> = _detailProduct
+    val detailProduct: LiveData<DetailProduct> = _detailProduct
     val loading: LiveData<Boolean> = _loading
     val product: LiveData<List<Product>> = _products
 
@@ -42,23 +42,25 @@ class ProductViewModel(private val productUseCase: ProductUseCase) : ViewModel()
         }
     }
 
-    fun getDetailProduct(productId : Int){
-        productUseCase.getDetailProduct(productId = productId){
-            resource ->
-            when(resource){
+    fun getDetailProduct(productId: Int) {
+        productUseCase.getDetailProduct(productId = productId) { resource ->
+            when (resource) {
                 is Resource.Success -> {
                     resource.data?.let {
                         _detailProduct.value = it
                     }
+                    _loading.value = false
                 }
+
                 is Resource.Error -> {
                     resource.message?.let {
 
                     }
+                    _loading.value = false
                 }
 
                 is Resource.Loading -> {
-
+                    _loading.value = true
                 }
             }
         }

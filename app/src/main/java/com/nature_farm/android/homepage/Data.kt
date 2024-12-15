@@ -42,7 +42,7 @@ object Data {
                 "10%",
                 R.drawable.ic_product_2,
                 "Rp 6.500",
-                "Rp. 5.850",
+                "Rp 5.850",
                 "4,9",
                 hasBeenSold = "Terjual 5rb+"
             )

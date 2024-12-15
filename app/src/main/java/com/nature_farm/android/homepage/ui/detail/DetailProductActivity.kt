@@ -5,6 +5,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.lifecycle.ViewModelProvider
@@ -46,6 +47,8 @@ class DetailProductActivity : AppCompatActivity() {
         getProductMaybeULike()
         setupObservers()
         getDetailProduct(getIdProduct)
+        initializeView()
+        quantityCount()
     }
 
     private fun setupObservers() {
@@ -79,6 +82,10 @@ class DetailProductActivity : AppCompatActivity() {
             Glide.with(this).load(uri).skipMemoryCache(true).into(binding.ivProductImage)
 
         }
+
+        viewmodel.loading.observe(this){
+            setupLoading(it)
+        }
     }
 
     private fun bindingTabLayout() {
@@ -99,6 +106,24 @@ class DetailProductActivity : AppCompatActivity() {
         binding.root.requestLayout()
     }
 
+    private fun initializeView(){
+        binding.layoutParent.visibility = View.GONE
+        binding.layoutBuyNow.visibility = View.GONE
+        binding.progressBar.visibility = View.VISIBLE
+    }
+    private fun setupLoading(loading : Boolean){
+
+        if(loading){
+            binding.layoutParent.visibility = View.GONE
+            binding.layoutBuyNow.visibility = View.GONE
+            binding.progressBar.visibility = View.VISIBLE
+        }else{
+            binding.layoutParent.visibility = View.VISIBLE
+            binding.layoutBuyNow.visibility = View.VISIBLE
+            binding.progressBar.visibility = View.GONE
+        }
+    }
+
 
     private fun getDetailProduct(productId: Int) {
         viewmodel.getDetailProduct(productId)
@@ -107,6 +132,22 @@ class DetailProductActivity : AppCompatActivity() {
     private fun getProductMaybeULike() {
         viewmodel.getAllProducts()
     }
+
+    private fun quantityCount() {
+        binding.tvInputQuantity.text = quantity.toString()
+        binding.btnMinus.isEnabled = quantity > 0
+        binding.btnPlus.setOnClickListener {
+            quantity += 1
+            binding.tvInputQuantity.text = quantity.toString()
+            binding.btnMinus.isEnabled = true
+        }
+        binding.btnMinus.setOnClickListener {
+            quantity = (quantity - 1).coerceAtLeast(0)
+            binding.tvInputQuantity.text = quantity.toString()
+            binding.btnMinus.isEnabled = quantity > 0
+        }
+    }
+
 
     private fun setupViewmodel() {
         val factory = Injector.provideViewModelFactory()

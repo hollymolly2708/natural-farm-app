@@ -4,16 +4,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/white">
 
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/layout_parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:context=".ui.product.detail.DetailProductActivity">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
+
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/white_gray">
@@ -75,7 +78,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
                     android:fontFamily="@font/roboto_reguler"
-                    android:text="Skintific Moisturizer 5X Ceramide 125g"
+                    android:text="Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     app:layout_constraintEnd_toStartOf="@+id/tv_stok"
@@ -88,9 +91,8 @@
                     android:id="@+id/tv_input_category"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
                     android:fontFamily="@font/roboto_bold"
-                    android:text="Serum"
+                    android:text="men's clothing"
                     android:textAllCaps="false"
                     android:textSize="12sp"
                     app:layout_constraintStart_toStartOf="@+id/tv_input_name_product"
@@ -429,6 +431,14 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+    </ProgressBar>
 </FrameLayout>
 
 
