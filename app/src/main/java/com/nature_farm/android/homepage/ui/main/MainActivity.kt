@@ -1,8 +1,13 @@
-package com.nature_farm.android.homepage
+package com.nature_farm.android.homepage.ui.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.nature_farm.android.homepage.ui.main.favorite.FavoriteFragment
+import com.nature_farm.android.homepage.ui.main.product.ProductFragment
+import com.nature_farm.android.homepage.ui.main.profile.ProfileFragment
+import com.nature_farm.android.homepage.R
 import com.nature_farm.android.homepage.databinding.ActivityMainBinding
+import com.nature_farm.android.homepage.ui.main.home.HomeFragment
 import com.nature_farm.android.homepage.ui.main.order.OrderFragment
 
 class MainActivity : AppCompatActivity() {

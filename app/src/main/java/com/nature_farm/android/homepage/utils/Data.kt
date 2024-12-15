@@ -1,4 +1,4 @@
-package com.nature_farm.android.homepage
+package com.nature_farm.android.homepage.utils
 
 import com.nature_farm.android.homepage.R
 import com.nature_farm.android.homepage.core.data.domain.model.Article

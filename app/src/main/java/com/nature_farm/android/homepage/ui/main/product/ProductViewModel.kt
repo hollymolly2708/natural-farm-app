@@ -73,16 +73,18 @@ class ProductViewModel(private val productUseCase: ProductUseCase) : ViewModel()
                     resource.data?.let {
                         _products.value = it
                     }
+                    _loading.value = false
                 }
 
                 is Resource.Error -> {
                     resource.message?.let {
 
                     }
+                    _loading.value = false
                 }
 
                 is Resource.Loading -> {
-
+                    _loading.value = true
                 }
             }
         }
@@ -96,15 +98,18 @@ class ProductViewModel(private val productUseCase: ProductUseCase) : ViewModel()
                     resource.data.let {
                         _products.value = it
                     }
+
+                    _loading.value = false
                 }
                 is Resource.Error -> {
                     resource.message?.let {
 
                     }
+                    _loading.value = false
                 }
 
                 is Resource.Loading -> {
-
+                    _loading.value = true
                 }
             }
         }
@@ -118,14 +123,17 @@ class ProductViewModel(private val productUseCase: ProductUseCase) : ViewModel()
                     resource.data.let {
                         _products.value = it
                     }
+                    _loading.value = false
                 }
                 is Resource.Error -> {
                     resource.message?.let {
 
                     }
+                    _loading.value = false
                 }
 
                 is Resource.Loading -> {
+                    _loading.value = true
 
                 }
             }

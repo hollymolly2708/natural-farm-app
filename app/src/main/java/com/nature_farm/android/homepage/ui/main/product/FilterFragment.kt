@@ -10,6 +10,12 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.nature_farm.android.homepage.databinding.FragmentFilterBinding
+import com.nature_farm.android.homepage.utils.SharedPrefHelper.getSavedCategory
+import com.nature_farm.android.homepage.utils.SharedPrefHelper.getSavedLimit
+import com.nature_farm.android.homepage.utils.SharedPrefHelper.getSelectedSort
+import com.nature_farm.android.homepage.utils.SharedPrefHelper.saveSelectedCategory
+import com.nature_farm.android.homepage.utils.SharedPrefHelper.saveSelectedLimit
+import com.nature_farm.android.homepage.utils.SharedPrefHelper.saveSelectedSort
 
 class FilterFragment : BottomSheetDialogFragment() {
     private var _binding: FragmentFilterBinding? = null
@@ -18,7 +24,7 @@ class FilterFragment : BottomSheetDialogFragment() {
     var selectedCategory: String? = null
     var selectedLimit: Int? = null
     var selectedSorting: String? = null
-
+    var isReset: Boolean? = null
     private var listener: FilterListener? = null
 
     fun setFilterListener(filterListener: FilterListener) {
@@ -38,9 +44,9 @@ class FilterFragment : BottomSheetDialogFragment() {
 
         // Ambil kategori yang disimpan
 
-        selectedCategory = getSavedCategory()
-        selectedLimit = getSavedLimit()
-        selectedSorting = getSelectedSort()
+        selectedCategory = getSavedCategory(requireActivity())
+        selectedLimit = getSavedLimit(requireActivity())
+        selectedSorting = getSelectedSort(requireActivity())
 
         // Tampilkan warna tombol berdasarkan kategori yang disimpan
         bindingViewColors()
@@ -49,29 +55,47 @@ class FilterFragment : BottomSheetDialogFragment() {
 
         binding.btnApply.setOnClickListener {
             selectedCategory?.let { category ->
-                saveSelectedCategory(category) // Simpan kategori yang dipilih
+                saveSelectedCategory(requireActivity(), category) // Simpan kategori yang dipilih
                 listener?.onCategorySelected(category) // Kirim ke listener
-                saveSelectedLimit(0)
-                saveSelectedSort(null)
+                saveSelectedLimit(requireActivity(), 0)
+                saveSelectedSort(requireActivity(), null)
             }
 
             selectedLimit?.let { limit ->
-                saveSelectedLimit(limit)
+                saveSelectedLimit(requireActivity(), limit)
                 listener?.onLimitSelected(limit)
-                saveSelectedCategory(null)
-                saveSelectedSort(null)
+                saveSelectedCategory(requireActivity(), null)
+                saveSelectedSort(requireActivity(), null)
             }
 
             selectedSorting?.let { sort ->
-                saveSelectedSort(sort)
-                saveSelectedLimit(0)
-                saveSelectedCategory(null)
+                saveSelectedSort(requireActivity(), sort)
+                saveSelectedLimit(requireActivity(), 0)
+                saveSelectedCategory(requireActivity(), null)
                 listener?.onSortingSelected(sort)
+            }
+
+            isReset?.let { reset ->
+                listener?.onResetSelected(reset)
             }
 
             dismiss()
         }
+
+        binding.btnResetFilter.setOnClickListener {
+
+            saveSelectedLimit(requireActivity(), 0)
+            saveSelectedCategory(requireActivity(), null)
+            saveSelectedSort(requireActivity(), null)
+            selectedSorting = null
+            selectedLimit = 0
+            selectedCategory = null
+            isReset = true
+
+            resetButtonColors()
+        }
     }
+
 
     private fun bindingViewColors() {
         // Reset semua tombol ke warna default
@@ -117,6 +141,7 @@ class FilterFragment : BottomSheetDialogFragment() {
                 ContextCompat.getDrawable(requireActivity(), R.drawable.background_stroke_green)
             )
         }
+
     }
 
     private fun resetButtonColors() {
@@ -193,41 +218,6 @@ class FilterFragment : BottomSheetDialogFragment() {
         }
     }
 
-    private fun saveSelectedSort(sort: String?) {
-        val sharedPreferences =
-            requireActivity().getSharedPreferences("FilterPrefs", Context.MODE_PRIVATE)
-        sharedPreferences.edit().putString("selectedSort", sort).apply()
-    }
-
-    private fun getSelectedSort(): String? {
-        val sharedPreferences =
-            requireActivity().getSharedPreferences("FilterPrefs", Context.MODE_PRIVATE)
-        return sharedPreferences.getString("selectedSort", null)
-    }
-
-    private fun saveSelectedCategory(category: String?) {
-        val sharedPreferences =
-            requireActivity().getSharedPreferences("FilterPrefs", Context.MODE_PRIVATE)
-        sharedPreferences.edit().putString("selectedCategory", category).apply()
-    }
-
-    private fun saveSelectedLimit(limit: Int) {
-        val sharedPreferences =
-            requireActivity().getSharedPreferences("FilterPrefs", Context.MODE_PRIVATE)
-        sharedPreferences.edit().putInt("selectedLimit", limit).apply()
-    }
-
-    private fun getSavedLimit(): Int {
-        val sharedPreferences =
-            requireActivity().getSharedPreferences("FilterPrefs", Context.MODE_PRIVATE)
-        return sharedPreferences.getInt("selectedLimit", 0)
-    }
-
-    private fun getSavedCategory(): String? {
-        val sharedPreferences =
-            requireActivity().getSharedPreferences("FilterPrefs", Context.MODE_PRIVATE)
-        return sharedPreferences.getString("selectedCategory", null)
-    }
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -238,5 +228,7 @@ class FilterFragment : BottomSheetDialogFragment() {
         fun onCategorySelected(category: String)
         fun onSortingSelected(sort: String)
         fun onLimitSelected(limit: Int)
+        fun onResetSelected(isReset: Boolean)
+
     }
 }

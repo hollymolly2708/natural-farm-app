@@ -16,6 +16,7 @@ import com.nature_farm.android.homepage.adapter.ProductAdapter
 import com.nature_farm.android.homepage.core.data.di.Injector
 import com.nature_farm.android.homepage.core.data.domain.model.Product
 import com.nature_farm.android.homepage.databinding.ActivityDetailProductBinding
+import com.nature_farm.android.homepage.ui.main.product.ProductShimmerAdapter
 import com.nature_farm.android.homepage.ui.main.product.ProductViewModel
 
 class DetailProductActivity : AppCompatActivity() {
@@ -42,6 +43,7 @@ class DetailProductActivity : AppCompatActivity() {
         getDetailProduct(getIdProduct)
         initializeView()
         quantityCount()
+        setupShimmerProduct()
 
 
     }
@@ -60,7 +62,6 @@ class DetailProductActivity : AppCompatActivity() {
             binding.rvMaybeULike.adapter = adapter
             binding.rvMaybeULike.layoutManager =
                 GridLayoutManager(this, 2, LinearLayoutManager.VERTICAL, false)
-
             binding.rvMaybeULike.setHasFixedSize(true)
         }
 
@@ -78,9 +79,19 @@ class DetailProductActivity : AppCompatActivity() {
 
         }
 
-        viewmodel.loading.observe(this){
+        viewmodel.loading.observe(this) {
             setupLoading(it)
         }
+    }
+
+
+    private fun setupShimmerProduct() {
+        binding.rvMaybeULikeShimmer.visibility = View.VISIBLE
+        val productShimmerAdapter = ProductShimmerAdapter()
+        binding.rvMaybeULikeShimmer.adapter = productShimmerAdapter
+        binding.rvMaybeULikeShimmer.layoutManager =
+            GridLayoutManager(this, 2, LinearLayoutManager.VERTICAL, false)
+        binding.rvMaybeULikeShimmer.setHasFixedSize(true)
     }
 
     private fun bindingTabLayout() {
@@ -89,8 +100,7 @@ class DetailProductActivity : AppCompatActivity() {
 
         val tabNames = arrayOf("Description", "Details")
         TabLayoutMediator(
-            binding.tabLayoutDetailProduct,
-            binding.viewpagerDetailProduct
+            binding.tabLayoutDetailProduct, binding.viewpagerDetailProduct
         ) { tab, position ->
             tab.text = tabNames[position]
         }.attach()
@@ -101,21 +111,34 @@ class DetailProductActivity : AppCompatActivity() {
         binding.root.requestLayout()
     }
 
-    private fun initializeView(){
+    private fun initializeView() {
         binding.layoutParent.visibility = View.GONE
         binding.layoutBuyNow.visibility = View.GONE
         binding.progressBar.visibility = View.VISIBLE
-    }
-    private fun setupLoading(loading : Boolean){
 
-        if(loading){
+        binding.btnToOrder.setOnClickListener {
+            //order
+        }
+
+        binding.btnCart.setOnClickListener {
+            //cart
+        }
+    }
+
+    private fun setupLoading(loading: Boolean) {
+
+        if (loading) {
             binding.layoutParent.visibility = View.GONE
             binding.layoutBuyNow.visibility = View.GONE
             binding.progressBar.visibility = View.VISIBLE
-        }else{
+            binding.rvMaybeULike.visibility = View.GONE
+            binding.rvMaybeULikeShimmer.visibility = View.VISIBLE
+        } else {
             binding.layoutParent.visibility = View.VISIBLE
             binding.layoutBuyNow.visibility = View.VISIBLE
             binding.progressBar.visibility = View.GONE
+            binding.rvMaybeULike.visibility = View.VISIBLE
+            binding.rvMaybeULikeShimmer.visibility = View.GONE
         }
     }
 

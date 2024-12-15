@@ -1,4 +1,4 @@
-package com.nature_farm.android.homepage
+package com.nature_farm.android.homepage.ui.main.profile
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.nature_farm.android.homepage.core.data.di.Injector
 import com.nature_farm.android.homepage.databinding.FragmentProfileBinding
-import com.nature_farm.android.homepage.ui.main.profile.ProfileViewModel
 
 
 class ProfileFragment : Fragment() {

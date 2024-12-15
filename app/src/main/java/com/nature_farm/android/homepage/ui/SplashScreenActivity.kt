@@ -5,8 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import com.nature_farm.android.homepage.MainActivity
-import com.nature_farm.android.homepage.R
+import com.nature_farm.android.homepage.ui.main.MainActivity
 import com.nature_farm.android.homepage.databinding.ActivitySplashScreenBinding
 
 class SplashScreenActivity : AppCompatActivity() {
