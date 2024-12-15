@@ -1,17 +1,16 @@
 package com.nature_farm.android.homepage
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.nature_farm.android.homepage.adapter.ProductAdapter
 import com.nature_farm.android.homepage.core.data.di.Injector
 import com.nature_farm.android.homepage.core.data.domain.model.Product
@@ -19,7 +18,6 @@ import com.nature_farm.android.homepage.databinding.FragmentProductBinding
 import com.nature_farm.android.homepage.ui.detail.DetailProductActivity
 import com.nature_farm.android.homepage.ui.main.product.ProductShimmerAdapter
 import com.nature_farm.android.homepage.ui.main.product.ProductViewModel
-import kotlin.io.path.fileVisitor
 
 
 class ProductFragment : Fragment() {
@@ -33,7 +31,11 @@ class ProductFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentProductBinding.inflate(inflater, container, false)
+        saveSelectedCategory(null)
+        saveSelectedLimit(0)
+        saveSelectedSort(null)
         return binding.root
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -43,6 +45,29 @@ class ProductFragment : Fragment() {
         getAllProducts()
 
         setupShimmerProduct()
+
+
+        binding.ivFilterProduct.setOnClickListener {
+            // Tampilkan BottomSheet
+
+            val filterBottomSheet = FilterFragment()
+            filterBottomSheet.setFilterListener(object : FilterFragment.FilterListener {
+                override fun onCategorySelected(category: String) {
+                    viewModel.getProductsByCategory(category)
+
+                }
+
+                override fun onSortingSelected(sort: String) {
+                    viewModel.getProductBySorting(sort)
+                }
+
+                override fun onLimitSelected(limit: Int) {
+                    viewModel.getProductsByLimit(limit)
+                }
+
+            })
+            filterBottomSheet.show(parentFragmentManager, "FilterBottomSheet")
+        }
     }
 
 
@@ -73,7 +98,7 @@ class ProductFragment : Fragment() {
     private fun setupObserver() {
         viewModel.product.observe(viewLifecycleOwner) {
             val adapter = ProductAdapter(it)
-            searchListener(it,adapter)
+            searchListener(it, adapter)
             adapter.onItemClickCallback(object : ProductAdapter.OnItemClickCallback {
                 override fun onClicked(data: Product) {
                     val intent = Intent(requireActivity(), DetailProductActivity::class.java)
@@ -105,7 +130,7 @@ class ProductFragment : Fragment() {
 
                 if (query != null) {
                     val filteredData = items.filter {
-                        it.productName!!.contains(query,true)
+                        it.productName!!.contains(query, true)
                     }
 
                     if (filteredData.isNotEmpty()) {
@@ -122,7 +147,7 @@ class ProductFragment : Fragment() {
             override fun onQueryTextChange(newText: String?): Boolean {
                 if (newText != null) {
                     val filteredData = items.filter {
-                        it.productName!!.contains(newText,true)
+                        it.productName!!.contains(newText, true)
 
                     }
 
@@ -138,6 +163,32 @@ class ProductFragment : Fragment() {
             }
 
         })
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        saveSelectedCategory(null)
+        saveSelectedLimit(0)
+        saveSelectedSort(null)
+    }
+
+    private fun saveSelectedSort(sort: String?) {
+        val sharedPreferences =
+            requireActivity().getSharedPreferences("FilterPrefs", Context.MODE_PRIVATE)
+        sharedPreferences.edit().putString("selectedSort", sort).apply()
+    }
+
+
+    private fun saveSelectedLimit(limit: Int) {
+        val sharedPreferences =
+            requireActivity().getSharedPreferences("FilterPrefs", Context.MODE_PRIVATE)
+        sharedPreferences.edit().putInt("selectedLimit", limit).apply()
+    }
+
+    private fun saveSelectedCategory(category: String?) {
+        val sharedPreferences =
+            requireActivity().getSharedPreferences("FilterPrefs", Context.MODE_PRIVATE)
+        sharedPreferences.edit().putString("selectedCategory", category).apply()
     }
 
     private fun getAllProducts() {

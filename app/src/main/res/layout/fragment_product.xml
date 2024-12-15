@@ -37,13 +37,30 @@ android:background="@color/white"
             android:id="@+id/iv_cart_product"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginEnd="24dp"
+            android:layout_marginEnd="8dp"
             android:src="@drawable/ic_cart_2_white"
+            app:layout_constraintBottom_toBottomOf="@+id/search_product"
+            app:layout_constraintEnd_toStartOf="@+id/iv_filter_product"
+            app:layout_constraintTop_toTopOf="@+id/search_product">
+
+        </ImageView>
+
+        <TextView
+            android:id="@+id/iv_filter_product"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:drawablePadding="3dp"
+            android:drawableStart="@drawable/ic_filter"
+            android:gravity="center"
+            android:text="Filter"
+            android:textColor="@color/white"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="@+id/search_product"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/search_product">
 
-        </ImageView>
+        </TextView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

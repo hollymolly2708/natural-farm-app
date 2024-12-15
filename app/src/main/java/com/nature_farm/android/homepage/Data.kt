@@ -11,11 +11,11 @@ import com.nature_farm.android.homepage.core.data.domain.model.Product
 object Data {
     fun categories(): ArrayList<Category> {
         val category = ArrayList<Category>()
-        category.add(Category(R.drawable.ic_discount, "On Sale\nProducts"))
-        category.add(Category(R.drawable.ic_mom_baby, "Mom & Baby"))
-        category.add(Category(R.drawable.ic_vitamins, "Vitamins &\nSupplements"))
-        category.add(Category(R.drawable.ic_personal_care, "Personal Care"))
-        category.add(Category(R.drawable.ic_weight_management, "Weight\nManagements"))
+        category.add(Category(1,R.drawable.ic_discount, "On Sale\nProducts"))
+        category.add(Category(2,R.drawable.ic_mom_baby, "Mom & Baby"))
+        category.add(Category(3,R.drawable.ic_vitamins, "Vitamins &\nSupplements"))
+        category.add(Category(4,R.drawable.ic_personal_care, "Personal Care"))
+        category.add(Category(5, R.drawable.ic_weight_management, "Weight\nManagements"))
         return category
     }
 

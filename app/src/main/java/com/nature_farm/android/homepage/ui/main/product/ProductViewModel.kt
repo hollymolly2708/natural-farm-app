@@ -65,4 +65,70 @@ class ProductViewModel(private val productUseCase: ProductUseCase) : ViewModel()
             }
         }
     }
+
+    fun getProductsByCategory(categoryName: String) {
+        productUseCase.getProductsByCategory(categoryName) { resource ->
+            when (resource) {
+                is Resource.Success -> {
+                    resource.data?.let {
+                        _products.value = it
+                    }
+                }
+
+                is Resource.Error -> {
+                    resource.message?.let {
+
+                    }
+                }
+
+                is Resource.Loading -> {
+
+                }
+            }
+        }
+    }
+
+    fun getProductsByLimit(limit: Int) {
+        productUseCase.getProductsByLimit(limit) { resource ->
+
+            when (resource) {
+                is Resource.Success -> {
+                    resource.data.let {
+                        _products.value = it
+                    }
+                }
+                is Resource.Error -> {
+                    resource.message?.let {
+
+                    }
+                }
+
+                is Resource.Loading -> {
+
+                }
+            }
+        }
+    }
+
+    fun getProductBySorting(sort: String) {
+        productUseCase.getProductsBySorting(sort) { resource ->
+
+            when (resource) {
+                is Resource.Success -> {
+                    resource.data.let {
+                        _products.value = it
+                    }
+                }
+                is Resource.Error -> {
+                    resource.message?.let {
+
+                    }
+                }
+
+                is Resource.Loading -> {
+
+                }
+            }
+        }
+    }
 }

@@ -13,4 +13,22 @@ class ProductInteractor(private val productRepository: ProductRepository) : Prod
     override fun getDetailProduct(productId: Int, callback: (Resource<DetailProduct>) -> Unit) {
         productRepository.getDetailProduct(productId, callback)
     }
+
+    override fun getProductsByCategory(
+        categoryName: String,
+        callback: (Resource<List<Product>>) -> Unit,
+    ) {
+        productRepository.getProductsByCategory(categoryName, callback)
+    }
+
+    override fun getProductsByLimit(limit: Int, callback: (Resource<List<Product>>) -> Unit) {
+        productRepository.getProductsByLimit(limit, callback)
+    }
+
+    override fun getProductsBySorting(
+        sorting: String,
+        callback: (Resource<List<Product>>) -> Unit,
+    ) {
+        productRepository.getProductsBySorting(sorting, callback)
+    }
 }

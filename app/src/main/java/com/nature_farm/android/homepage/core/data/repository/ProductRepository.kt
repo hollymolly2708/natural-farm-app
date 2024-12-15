@@ -73,4 +73,79 @@ class ProductRepository private constructor(private val productRemoteDataSource:
             }
         }
     }
+
+    override fun getProductsByCategory(
+        categoryName: String,
+        callback: (Resource<List<Product>>) -> Unit,
+    ) {
+        productRemoteDataSource.getProducstByCategory(categoryName) { apiResponse ->
+            when (apiResponse) {
+                is ApiResponse.Success -> {
+                    apiResponse.data?.let { productResponseItems ->
+                        val products =
+                            ProductMapper.productResponsesToProducts(productResponseItems)
+                        callback(Resource.Success(products))
+                    }
+                }
+
+                is ApiResponse.Error -> {
+                    apiResponse.errorMessage?.let {
+                        callback(Resource.Error(it))
+                    }
+                }
+
+                is ApiResponse.Empty -> {
+                    callback(Resource.Error("Unknown Error"))
+                }
+            }
+        }
+    }
+
+    override fun getProductsByLimit(limit: Int, callback: (Resource<List<Product>>) -> Unit) {
+        productRemoteDataSource.getProductsByLimit(limit) { apiResponse ->
+            when (apiResponse) {
+                is ApiResponse.Success -> {
+                    apiResponse.data.let {
+                        val products = ProductMapper.productResponsesToProducts(it)
+                        callback(Resource.Success(products))
+                    }
+
+                }
+
+                is ApiResponse.Error -> {
+                    apiResponse.errorMessage?.let {
+                        callback(Resource.Error(it))
+                    }
+                }
+
+                is ApiResponse.Empty -> {
+                    callback(Resource.Error("Unknown error"))
+                }
+            }
+        }
+    }
+
+    override fun getProductsBySorting(sort: String, callback: (Resource<List<Product>>) -> Unit) {
+        productRemoteDataSource.getProductsBySorting(sort) { apiResponse ->
+            when (apiResponse) {
+                is ApiResponse.Success -> {
+                    apiResponse.data.let {
+                        val products = ProductMapper.productResponsesToProducts(it)
+                        callback(Resource.Success(products))
+                    }
+
+                }
+
+                is ApiResponse.Error -> {
+                    apiResponse.errorMessage?.let {
+                        callback(Resource.Error(it))
+                    }
+                }
+
+                is ApiResponse.Empty -> {
+                    callback(Resource.Error("Unknown error"))
+                }
+            }
+        }
+    }
 }

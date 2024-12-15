@@ -2,28 +2,21 @@ package com.nature_farm.android.homepage.ui.detail
 
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.ImageView
-import android.widget.LinearLayout
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayoutMediator
-import com.nature_farm.android.homepage.R
 import com.nature_farm.android.homepage.adapter.DetailProductTabLayoutAdapter
-import com.nature_farm.android.homepage.adapter.ImageSliderAdapter
 import com.nature_farm.android.homepage.adapter.ProductAdapter
 import com.nature_farm.android.homepage.core.data.di.Injector
 import com.nature_farm.android.homepage.core.data.domain.model.Product
-import com.nature_farm.android.homepage.core.data.domain.model.SliderImage
 import com.nature_farm.android.homepage.databinding.ActivityDetailProductBinding
 import com.nature_farm.android.homepage.ui.main.product.ProductViewModel
-import java.math.BigDecimal
 
 class DetailProductActivity : AppCompatActivity() {
     companion object {
@@ -49,6 +42,8 @@ class DetailProductActivity : AppCompatActivity() {
         getDetailProduct(getIdProduct)
         initializeView()
         quantityCount()
+
+
     }
 
     private fun setupObservers() {

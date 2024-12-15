@@ -26,7 +26,7 @@ class CategoryAdapter(private val categories: ArrayList<Category>) :
     override fun onBindViewHolder(holder: CategoryAdapter.CategoryViewHolder, position: Int) {
         val data = categories[position]
         holder.binding.tvOnSale.text = data.categoryName
-        holder.binding.ivOnSale.setImageResource(data.image)
+        holder.binding.ivOnSale.setImageResource(data.image!!)
 
     }
 

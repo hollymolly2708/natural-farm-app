@@ -1,10 +1,12 @@
 package com.nature_farm.android.homepage.core.data.source.remote.network
 
+import com.nature_farm.android.homepage.core.data.domain.model.Product
 import com.nature_farm.android.homepage.core.data.source.remote.response.ProductResponseItem
 import com.nature_farm.android.homepage.core.data.source.remote.response.UserResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ApiService {
 
@@ -14,7 +16,17 @@ interface ApiService {
     @GET("products/{productId}")
     fun getDetailProducts(@Path("productId") productId: Int): Call<ProductResponseItem>
 
+    @GET("products/category/{categoryName}")
+    fun getProductsByCategory(@Path("categoryName") categoryName: String): Call<List<ProductResponseItem>>
+
+    @GET("products")
+    fun getProductsByLimit(@Query("limit") limit: Int): Call<List<ProductResponseItem>>
+
+    @GET("products")
+    fun getProductsBySorting(@Query("sort") sort : String) : Call<List<ProductResponseItem>>
+
     @GET("users/{userId}")
-    fun getUserProfile(@Path("userId") userId : Int ) : Call<UserResponse>
+    fun getUserProfile(@Path("userId") userId: Int): Call<UserResponse>
+
 
 }
